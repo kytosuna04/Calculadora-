@@ -1,0 +1,91 @@
+#include <iostream>
+#include <cmath>
+#include <stdexcept>
+
+using namespace std;
+
+class Calculadora {
+public:
+    // sobrecarga de suma
+    double sumar(double x, double y) {
+        return x + y;
+    }
+    
+    double sumar(double x, double y, double z) {
+        return x + y + z;
+    }
+    
+    double restar(double x, double y) {
+        return x - y;
+    }
+    
+    double multiplicar(double x, double y) {
+        return x * y;
+    }
+    
+    double dividir(double x, double y) {
+        if (y == 0) {
+            throw invalid_argument("no se puede dividir entre cero");
+        }
+        return x / y;
+    }
+    
+    // factorial recursivo, el parametro paso es opcional
+    long long factorial(int num, bool paso = false) {
+        if (num < 0) {
+            throw invalid_argument("factorial no valido para negativos");
+        }
+        if (num == 0 || num == 1) {
+            if (paso) cout << num << "! = 1" << endl;
+            return 1;
+        }
+        if (paso) {
+            cout << num << "! = " << num << " * " << (num-1) << "!" << endl;
+        }
+        return num * factorial(num - 1, paso);
+    }
+    
+    // potencia con exponente por defecto en 2
+    double potencia(double base, int exp = 2) {
+        return pow(base, exp);
+    }
+    
+    double raizCuadrada(double val) {
+        if (val < 0) {
+            throw invalid_argument("raiz de negativo no existe");
+        }
+        return sqrt(val);
+    }
+    
+    // raiz con indice por defecto en 2
+    double raiz(double val, int ind = 2) {
+        if (val < 0 && ind % 2 == 0) {
+            throw invalid_argument("raiz par de negativo no existe");
+        }
+        if (ind == 0) {
+            throw invalid_argument("indice no puede ser cero");
+        }
+        return pow(val, 1.0 / ind);
+    }
+};
+
+int main() {
+    Calculadora miCalc;
+    int op;
+    double a, b, c, res;
+    int e, ind;
+    char r;
+    
+    do {
+        cout << "\n--- CALCULADORA ---" << endl;
+        cout << "1. Suma" << endl;
+        cout << "2. Resta" << endl;
+        cout << "3. Multiplicacion" << endl;
+        cout << "4. Division" << endl;
+        cout << "5. Factorial" << endl;
+        cout << "6. Potencia" << endl;
+        cout << "7. Raiz cuadrada" << endl;
+        cout << "8. Raiz n-esima" << endl;
+        cout << "0. Salir" << endl;
+        cout << "Opcion: ";
+        cin >> op;
