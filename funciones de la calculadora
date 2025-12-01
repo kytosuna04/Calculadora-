@@ -89,3 +89,116 @@ int main() {
         cout << "0. Salir" << endl;
         cout << "Opcion: ";
         cin >> op;
+
+ try {
+            switch (op) {
+                case 1:
+                    cout << "Cuantos numeros? (2/3): ";
+                    cin >> r;
+                    cout << "Numero 1: ";
+                    cin >> a;
+                    cout << "Numero 2: ";
+                    cin >> b;
+                    if (r == '3') {
+                        cout << "Numero 3: ";
+                        cin >> c;
+                        res = miCalc.sumar(a, b, c);
+                    } else {
+                        res = miCalc.sumar(a, b);
+                    }
+                    cout << "Resultado: " << res << endl;
+                    break;
+                    
+                case 2:
+                    cout << "Numero 1: ";
+                    cin >> a;
+                    cout << "Numero 2: ";
+                    cin >> b;
+                    res = miCalc.restar(a, b);
+                    cout << "Resultado: " << res << endl;
+                    break;
+                    
+                case 3:
+                    cout << "Numero 1: ";
+                    cin >> a;
+                    cout << "Numero 2: ";
+                    cin >> b;
+                    res = miCalc.multiplicar(a, b);
+                    cout << "Resultado: " << res << endl;
+                    break;
+                    
+                case 4:
+                    cout << "Dividendo: ";
+                    cin >> a;
+                    cout << "Divisor: ";
+                    cin >> b;
+                    res = miCalc.dividir(a, b);
+                    cout << "Resultado: " << res << endl;
+                    break;
+                    
+                case 5:
+                    cout << "Numero: ";
+                    cin >> e;
+                    cout << "Ver pasos? (s/n): ";
+                    cin >> r;
+                    if (r == 's') {
+                        res = miCalc.factorial(e, true);
+                    } else {
+                        res = miCalc.factorial(e);
+                    }
+                    cout << "Resultado: " << res << endl;
+                    break;
+                    
+                case 6:
+                    cout << "Base: ";
+                    cin >> a;
+                    cout << "Usar exponente 2? (s/n): ";
+                    cin >> r;
+                    if (r == 's') {
+                        res = miCalc.potencia(a);
+                    } else {
+                        cout << "Exponente: ";
+                        cin >> e;
+                        res = miCalc.potencia(a, e);
+                    }
+                    cout << "Resultado: " << res << endl;
+                    break;
+                    
+                case 7:
+                    cout << "Numero: ";
+                    cin >> a;
+                    res = miCalc.raizCuadrada(a);
+                    cout << "Resultado: " << res << endl;
+                    break;
+                    
+                case 8:
+                    cout << "Numero: ";
+                    cin >> a;
+                    cout << "Usar indice 2? (s/n): ";
+                    cin >> r;
+                    if (r == 's') {
+                        res = miCalc.raiz(a);
+                    } else {
+                        cout << "Indice: ";
+                        cin >> ind;
+                        res = miCalc.raiz(a, ind);
+                    }
+                    cout << "Resultado: " << res << endl;
+                    break;
+                    
+                case 0:
+                    cout << "Adios" << endl;
+                    break;
+                    
+                default:
+                    cout << "opcion invalida" << endl;
+            }
+            
+        } catch (const exception& error) {
+            cout << "Error: " << error.what() << endl;
+        }
+        
+    } while (op != 0);
+    
+    return 0;
+}
